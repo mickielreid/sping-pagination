@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+table{
+    width:100%;
+}
+table td, table th {
+    border: 1px solid grey;
+ }
+table th {
+    background: grey;
+ }
+a {
+    text-decoration: none;
+}
+
+</style>
+</head>
+<body>
+<h2>Employees</h2>
+    <div th:if="${page.isEmpty()}">
+        <h1>NO Data was found</h1>
+    </div>
+<table>
+
+
+    <tr><th>Id</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Salary</th>
+    </tr>
+    <tr th:each="employee : ${page.content}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.dept}"></td>
+        <td th:text="${employee.salary}"></td>
+    </tr>
+</table>
+
+
+
+
+    <div>
+        <span th:if="${page.hasPrevious()}">
+           <button>
+               <a  th:href="@{/employees(page=${page.number-1},size=${page.size})}">Previous</a>
+           </button>
+        </span>
+
+
+
+      <button disabled type="button" >
+          <a  th:text="${page.number}" > current</a>
+      </button>
+
+        <span th:if="${page.hasNext()}">
+
+           <button>
+                <a th:href="@{/employees(page=${page.number+1},size=${page.size})}" th:text="${page.number +1}" >2</a>
+           </button>
+
+         </span>
+
+        <span th:if="${page.hasNext()}">
+            <button>
+                <a th:href="@{/employees(page=${page.number+2},size=${page.size})}"  th:text="${page.number + 2}">3</a>
+            </button>
+        </span>
+
+
+        <span th:if="${page.hasNext()}">
+             <button>
+                 <a class="direction" th:href="@{/employees(page=${page.number+1},size=${page.size})}">Next</a>
+             </button>
+        </span>
+
+    </div>
+
+
+</body>
+</html>
