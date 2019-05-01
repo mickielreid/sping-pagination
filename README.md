@@ -6,8 +6,8 @@ This project is mimicking the pagination on amazon.ca.
 2. Thymeleaf.
 3. Spring Web.
 4. Spring Boot.
-4  h2.
-5. lombok **(the best thing since slice bread)**.
+5. h2.
+6. lombok **(the best thing since slice bread)**.
 
 ## This is how the amazon.ca pagination looks
 
